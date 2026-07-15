@@ -12,7 +12,7 @@ const upload = multer({ dest: os.tmpdir() });
 // Valores medidos sobre trex.mp4 (ver README.md para el detalle de cómo
 // se midieron).
 const TEMPLATE_VIDEO_PATH = path.join(__dirname, "trex.mp4");
-const ROAR_START = 20.4;
+const ROAR_START = 19.9;
 const ROAR_DURATION = 3.47;
 const FADE_SECONDS = 0.05;
 
