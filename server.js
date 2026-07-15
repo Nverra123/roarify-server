@@ -12,8 +12,9 @@ const upload = multer({ dest: os.tmpdir() });
 // Valores medidos sobre trex.mp4 (ver README.md para el detalle de cómo
 // se midieron).
 const TEMPLATE_VIDEO_PATH = path.join(__dirname, "trex.mp4");
-const ROAR_START = 19.9;
+const ROAR_START = 19.4;
 const ROAR_DURATION = 3.47;
+const ORIGINAL_ROAR_END = 23.87;
 const FADE_SECONDS = 0.05;
 
 app.get("/health", (_req, res) => {
@@ -44,7 +45,7 @@ app.post("/mix", upload.single("userRecording"), async (req, res) => {
   const userRecordingPath = req.file.path;
   const outputPath = path.join(os.tmpdir(), `roarify_${Date.now()}.mp4`);
 
-  const roarEnd = Math.round((ROAR_START + ROAR_DURATION) * 100) / 100;
+  const roarEnd = ORIGINAL_ROAR_END;
   const delayMs = Math.round(ROAR_START * 1000);
   const fadeOutStart = Math.max(0, ROAR_DURATION - FADE_SECONDS);
 
